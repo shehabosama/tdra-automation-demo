@@ -5,7 +5,7 @@ pipeline {
         stage('Trigger Child Pipeline Of Android Project') {
             steps {
                 script {
-                    def childPipeline = load '/jenkins_test_ci_cd/jenkinsfile.groovy'
+                    def childPipeline = load '/jenkins_test_ci_cd/Jenkinsfile.groovy'
                     childPipeline.call()
                 }
             }
