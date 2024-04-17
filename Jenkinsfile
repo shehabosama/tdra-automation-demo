@@ -15,9 +15,10 @@ pipeline {
                     script {
                         // Load and call child pipeline from a specific directory
                      //   def childPipeline = load 'path/to/childPipeline.groovy'
-                         def childPipeline = load 'jenkins_test_ci_cd/Jenkinsfile.groovy'
-
-                        childPipeline.call()
+//                          def childPipeline = load 'jenkins_test_ci_cd/Jenkinsfile.groovy'
+//
+//                         childPipeline.call()
+                           build job: 'pipeline_Android'
                     }
                 }
             }
