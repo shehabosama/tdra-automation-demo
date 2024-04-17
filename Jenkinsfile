@@ -1,20 +1,25 @@
 pipeline {
     agent any
 
-    stages {
-     stage('Checkout') {
+     stages {
+            stage('Stage 1') {
                 steps {
-                    // Checkout the code from the Git repository
-                    git branch: 'master', url: 'https://github.com/shehabosama/tdra-automation-demo.git'
+                      git branch: 'master', url: 'https://github.com/shehabosama/tdra-automation-demo.git'
                 }
             }
-        stage('Trigger Child Pipeline Of Android Project') {
-            steps {
-                script {
-                    def childPipeline = load 'jenkins_test_ci_cd/Jenkinsfile'
-                    childPipeline.call()
+
+            stage('Stage 2') {
+                steps {
+                    // Your stage 2 steps here
+
+                    script {
+                        // Load and call child pipeline from a specific directory
+                     //   def childPipeline = load 'path/to/childPipeline.groovy'
+                         def childPipeline = load 'jenkins_test_ci_cd/Jenkinsfile.groovy'
+
+                        childPipeline.call()
+                    }
                 }
             }
         }
-    }
 }
